@@ -13,10 +13,27 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const siteTitle = "Prepto — Interview prep kits";
+const siteDescription =
+  "Turn a job description into a personalised interview preparation kit.";
+
 export const metadata: Metadata = {
-  title: "Prepto — Interview prep kits",
-  description:
-    "Turn a job description into a personalised interview preparation kit.",
+  metadataBase: new URL("https://prepto.vercel.app"),
+  title: siteTitle,
+  description: siteDescription,
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    type: "website",
+    url: "/",
+    siteName: "Prepto",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteTitle,
+    description: siteDescription,
+  },
 };
 
 const clerkLocalization = {
