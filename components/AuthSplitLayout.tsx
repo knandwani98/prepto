@@ -30,17 +30,17 @@ export const authClerkAppearance = {
 export function AuthSplitLayout({ children }: { children: ReactNode }) {
   return (
     <div className="auth-split flex h-full min-h-0 flex-1">
-      <aside className="relative hidden w-1/2 overflow-hidden bg-background lg:flex">
+      <aside className="relative hidden w-[40%] shrink-0 overflow-hidden bg-background lg:flex">
         <div className="auth-halftone" />
-        <div className="relative z-10 flex flex-col justify-center px-14 xl:px-20">
+        <div className="relative z-10 flex w-full flex-col items-center justify-center px-8 xl:px-10">
           <BrandMark className="h-14 w-14" priority />
-          <p className="mt-10 max-w-sm text-[32px] leading-[1.15] font-semibold tracking-tight text-foreground">
+          <p className="mt-10 max-w-sm text-center text-[32px] leading-[1.15] font-semibold tracking-tight text-foreground">
             Turn a job description into a personalised prep kit.
           </p>
         </div>
       </aside>
 
-      <section className="relative flex w-full flex-1 flex-col bg-background lg:w-1/2 lg:flex-none">
+      <section className="relative flex w-full flex-1 flex-col bg-background">
         <Link
           href="/"
           className="absolute top-5 left-5 z-10 inline-flex items-center gap-1.5 text-sm text-muted hover:text-foreground"

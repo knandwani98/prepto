@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Header } from "@/components/Header";
-import { SiteFooter } from "@/components/SiteFooter";
 import { SidebarProvider } from "@/components/AppSidebar";
 import { UnsavedChangesProvider } from "@/components/UnsavedChanges";
 import { ToastProvider } from "@/components/ui/Toast";
@@ -103,7 +102,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 <main className="flex min-h-0 flex-1 flex-col overflow-y-auto">
                   {children}
                 </main>
-                <SiteFooter />
               </SidebarProvider>
             </UnsavedChangesProvider>
           </ToastProvider>

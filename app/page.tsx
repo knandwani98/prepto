@@ -1,6 +1,7 @@
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { LandingHome } from "@/components/LandingHome";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export default async function HomePage() {
   const { userId } = await auth();
@@ -8,5 +9,10 @@ export default async function HomePage() {
     redirect("/new");
   }
 
-  return <LandingHome />;
+  return (
+    <>
+      <LandingHome />
+      <SiteFooter />
+    </>
+  );
 }

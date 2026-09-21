@@ -106,6 +106,9 @@ export function Header() {
                 <HashLink href="#faq" className="hover:text-foreground">
                   FAQ
                 </HashLink>
+                <HashLink href="#contact" className="hover:text-foreground">
+                  Contact
+                </HashLink>
               </div>
               <SignInButton mode="redirect" forceRedirectUrl="/new">
                 <Button variant="secondary" size="sm">

@@ -3,7 +3,7 @@
 import { Link } from "@/components/UnsavedChanges";
 import { useParams, useRouter } from "next/navigation";
 import { useAuth } from "@clerk/nextjs";
-import { useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useState } from "react";
 import { GeneratingState } from "@/components/GeneratingState";
 import { KitViewer } from "@/components/KitViewer";
 import { Button } from "@/components/ui/Button";
@@ -125,12 +125,14 @@ export default function KitDetailPage() {
 
   return (
     <div className="mx-auto w-full max-w-5xl px-4 py-10">
-      <KitViewer
-        key={`${kit.id}-${kit.updatedAt}`}
-        kit={kit}
-        onSave={handleSave}
-        saving={saving}
-      />
+      <Suspense fallback={<Skeleton className="h-64" />}>
+        <KitViewer
+          key={`${kit.id}-${kit.updatedAt}`}
+          kit={kit}
+          onSave={handleSave}
+          saving={saving}
+        />
+      </Suspense>
     </div>
   );
 }

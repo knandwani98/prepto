@@ -7,19 +7,33 @@ import { Label } from "./ui/Input";
 
 export function SectionToolbar({
   onSave,
+  onCancel,
   saving,
   canSave = false,
 }: {
   onSave: () => Promise<void> | void;
+  onCancel: () => void;
   saving?: boolean;
   canSave?: boolean;
 }) {
   if (!canSave && !saving) return null;
 
   return (
-    <Button variant="primary" onClick={onSave} disabled={saving}>
-      {saving ? "Saving…" : "Save edits"}
-    </Button>
+    <div
+      role="region"
+      aria-label="Unsaved edits"
+      className="sticky bottom-2 z-50 -mx-4 flex h-11 items-center justify-between gap-3 rounded-lg border border-border/70 bg-transparent px-3 backdrop-blur-xl"
+    >
+      <p className="text-[12px] font-medium text-muted">Unsaved edits</p>
+      <div className="flex shrink-0 items-center gap-2">
+        <Button variant="secondary" className="text-xs" size="sm" onClick={onCancel} disabled={saving}>
+          Cancel
+        </Button>
+        <Button variant="primary" className="text-xs" size="sm" onClick={onSave} disabled={saving}>
+          {saving ? "Saving…" : "Save"}
+        </Button>
+      </div>
+    </div>
   );
 }
 

@@ -12,7 +12,7 @@ export default async function AppLayout({
     <div className="flex h-full min-h-0 flex-1 overflow-hidden">
       <AppSidebar />
       <div className="min-h-0 min-w-0 flex-1 overflow-y-auto overscroll-contain">
-        <div className="pt-14 pb-12">{children}</div>
+        <div className="pt-14">{children}</div>
       </div>
     </div>
   );
