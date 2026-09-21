@@ -102,7 +102,7 @@ const faqs = [
   },
   {
     q: "Can I change the kit once it’s built?",
-    a: "Yes. Every section is editable, and you can practise with flashcards and the quiz from the same kit. Generating a new kit replaces your current one.",
+    a: "Yes. Every section is editable, and you can practise with flashcards and the quiz from the same kit. You can also generate more kits for other roles without losing the ones you already have.",
   },
 ];
 
