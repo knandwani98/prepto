@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Link, useUnsavedChanges } from "./UnsavedChanges";
 import type {
   GeneratedKit,
@@ -14,6 +15,7 @@ import { Card } from "./ui/Card";
 import { Input, Label } from "./ui/Input";
 import { Tabs } from "./ui/Tabs";
 import { Textarea } from "./ui/Textarea";
+import { cn } from "@/lib/cn";
 import { ListEditor, SectionToolbar } from "./SectionToolbar";
 
 function trimStrings<T>(value: T): T {
@@ -27,14 +29,25 @@ function trimStrings<T>(value: T): T {
   return value;
 }
 
-const tabs: { id: RegenerableSection; label: string }[] = [
-  { id: "companyBrief", label: "Brief" },
-  { id: "roleBreakdown", label: "Role" },
-  { id: "questions", label: "Questions" },
-  { id: "flashcards", label: "Flashcards" },
-  { id: "quiz", label: "Quiz" },
-  { id: "schedule", label: "Schedule" },
+const TAB_PARAM = "tab";
+const DEFAULT_TAB: RegenerableSection = "companyBrief";
+
+const tabs: { id: RegenerableSection; label: string; query: string }[] = [
+  { id: "companyBrief", label: "Brief", query: "brief" },
+  { id: "roleBreakdown", label: "Role", query: "role" },
+  { id: "questions", label: "Questions", query: "questions" },
+  { id: "flashcards", label: "Flashcards", query: "flashcards" },
+  { id: "quiz", label: "Quiz", query: "quiz" },
+  { id: "schedule", label: "Schedule", query: "schedule" },
 ];
+
+function parseTabParam(value: string | null): RegenerableSection {
+  return tabs.find((tab) => tab.query === value)?.id ?? DEFAULT_TAB;
+}
+
+function tabQueryValue(id: RegenerableSection) {
+  return tabs.find((tab) => tab.id === id)?.query ?? tabs[0].query;
+}
 
 const categoryTone: Record<KitQuestion["category"], "info" | "success" | "gold" | "default" | "danger"> = {
   behavioral: "info",
@@ -53,10 +66,25 @@ export function KitViewer({
   onSave: (next: GeneratedKit) => Promise<void>;
   saving?: boolean;
 }) {
-  const [tab, setTab] = useState<RegenerableSection>("companyBrief");
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const tab = parseTabParam(searchParams.get(TAB_PARAM));
   const [draft, setDraft] = useState<GeneratedKit>(kit.kit!);
   const { setBlocked } = useUnsavedChanges();
   const saved = kit.kit!;
+
+  function setTab(next: RegenerableSection) {
+    if (next === tab) return;
+    const params = new URLSearchParams(searchParams.toString());
+    if (next === DEFAULT_TAB) {
+      params.delete(TAB_PARAM);
+    } else {
+      params.set(TAB_PARAM, tabQueryValue(next));
+    }
+    const query = params.toString();
+    router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
+  }
   const trimmedDraft = useMemo(() => trimStrings(draft), [draft]);
   const canSave =
     JSON.stringify(trimmedDraft) !== JSON.stringify(trimStrings(saved));
@@ -69,7 +97,7 @@ export function KitViewer({
   }, [canSave, setBlocked]);
 
   return (
-    <div className="space-y-6">
+    <div className={cn("space-y-6", (canSave || saving) && "pb-16")}>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-[11px] font-bold tracking-[0.12em] text-muted uppercase">
@@ -92,11 +120,6 @@ export function KitViewer({
           <Link href={`/kits/${kit.id}/quiz`}>
             <Button>Quiz</Button>
           </Link>
-          <SectionToolbar
-            saving={saving}
-            canSave={canSave}
-            onSave={() => onSave(trimmedDraft)}
-          />
         </div>
       </div>
 
@@ -138,6 +161,13 @@ export function KitViewer({
           onChange={(schedule) => setDraft({ ...draft, schedule })}
         />
       ) : null}
+
+      <SectionToolbar
+        saving={saving}
+        canSave={canSave}
+        onSave={() => onSave(trimmedDraft)}
+        onCancel={() => setDraft(structuredClone(saved))}
+      />
     </div>
   );
 }
