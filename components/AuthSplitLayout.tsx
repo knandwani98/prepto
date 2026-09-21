@@ -29,30 +29,43 @@ export const authClerkAppearance = {
 
 export function AuthSplitLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="auth-split flex min-h-dvh flex-1">
-      <aside className="relative hidden w-[42%] overflow-hidden bg-background lg:flex">
+    <div className="auth-split flex h-full min-h-0 flex-1">
+      <aside className="relative hidden w-1/2 overflow-hidden bg-background lg:flex">
         <div className="auth-halftone" />
         <div className="relative z-10 flex flex-col justify-center px-14 xl:px-20">
-          <BrandMark className="h-14 w-14" />
+          <BrandMark className="h-14 w-14" priority />
           <p className="mt-10 max-w-sm text-[32px] leading-[1.15] font-semibold tracking-tight text-foreground">
             Turn a job description into a personalised prep kit.
           </p>
         </div>
       </aside>
 
-      <section className="relative flex flex-1 flex-col bg-background">
+      <section className="relative flex w-full flex-1 flex-col bg-background lg:w-1/2 lg:flex-none">
         <Link
           href="/"
           className="absolute top-5 left-5 z-10 inline-flex items-center gap-1.5 text-sm text-muted hover:text-foreground"
         >
-          <span aria-hidden="true">←</span>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+            className="h-4 w-4"
+          >
+            <path
+              d="M19 12H5M12 19l-7-7 7-7"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
           Home
         </Link>
 
         <div className="flex flex-1 flex-col items-center justify-center px-6 py-20">
           <div className="mb-8 flex items-center gap-2.5 lg:hidden">
             <BrandMark className="h-7 w-7" />
-            <span className="text-[15px] font-semibold tracking-tight">
+            <span className="text-lg font-semibold tracking-tight">
               Prepto
             </span>
           </div>

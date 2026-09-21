@@ -6,6 +6,7 @@ import { SignInButton, UserButton, useAuth } from "@clerk/nextjs";
 import { useSidebar } from "./AppSidebar";
 import { Button } from "./ui/Button";
 import { BrandMark } from "./BrandMark";
+import { HashLink } from "./HashLink";
 
 function MenuIcon({ open }: { open: boolean }) {
   return (
@@ -73,14 +74,14 @@ export function Header() {
             href={showAppChrome ? "/new" : "/"}
             className="flex items-center gap-2.5"
           >
-            <BrandMark className="h-7 w-7" />
-            <span className="text-[15px] font-semibold tracking-tight text-foreground">
+            <BrandMark className="h-7 w-7" priority />
+            <span className="text-lg font-semibold tracking-tight text-foreground">
               Prepto
             </span>
           </Link>
         </div>
 
-        <nav className="flex items-center gap-2">
+        <nav className="flex items-center gap-2 sm:gap-6">
           {showAppChrome ? (
             isLoaded ? (
               <UserButton
@@ -94,11 +95,24 @@ export function Header() {
               <span className="h-8 w-8 rounded-full bg-elevated" />
             )
           ) : (
-            <SignInButton mode="redirect" forceRedirectUrl="/new">
-              <Button variant="secondary" size="sm">
-                Sign in
-              </Button>
-            </SignInButton>
+            <>
+              <div className="hidden items-center gap-5 text-[13px] font-medium text-muted md:flex">
+                <HashLink href="#how-it-works" className="hover:text-foreground">
+                  How it works
+                </HashLink>
+                <HashLink href="#inside" className="hover:text-foreground">
+                  What&apos;s inside
+                </HashLink>
+                <HashLink href="#faq" className="hover:text-foreground">
+                  FAQ
+                </HashLink>
+              </div>
+              <SignInButton mode="redirect" forceRedirectUrl="/new">
+                <Button variant="secondary" size="sm">
+                  Sign in
+                </Button>
+              </SignInButton>
+            </>
           )}
         </nav>
       </div>

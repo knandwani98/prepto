@@ -133,8 +133,14 @@ export function Link({
     <NextLink
       href={href}
       onNavigate={(event) => {
-        onNavigate?.(event);
-        if (event.defaultPrevented) return;
+        let prevented = false;
+        onNavigate?.({
+          preventDefault() {
+            prevented = true;
+            event.preventDefault();
+          },
+        });
+        if (prevented) return;
         if (consumeAllowNext() || !blocked) return;
         const next = hrefToPath(href);
         if (isSameDocument(next)) return;

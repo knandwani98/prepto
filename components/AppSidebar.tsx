@@ -329,7 +329,7 @@ export function AppSidebar() {
           </Link>
         </div>
 
-        <nav className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-2">
+        <nav className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-2 pb-14">
           {error ? (
             <div className="px-2 py-3">
               <p className="text-[13px] text-danger">{error}</p>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Header } from "@/components/Header";
+import { SiteFooter } from "@/components/SiteFooter";
 import { SidebarProvider } from "@/components/AppSidebar";
 import { UnsavedChangesProvider } from "@/components/UnsavedChanges";
 import { ToastProvider } from "@/components/ui/Toast";
@@ -24,6 +25,8 @@ const clerkLocalization = {
   lastAuthenticationStrategy: "Last",
   signIn: {
     start: {
+      title: "Sign in to Prepto",
+      titleCombined: "Sign in to Prepto",
       subtitle: "Connect to Prepto with:",
       subtitleCombined: "Connect to Prepto with:",
     },
@@ -74,15 +77,16 @@ const clerkAppearance = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <ClerkProvider appearance={clerkAppearance} localization={clerkLocalization}>
-      <html lang="en" className={`${inter.variable} h-full antialiased`}>
-        <body className="relative h-full overflow-hidden font-sans">
+      <html lang="en" className={`${inter.variable} h-full scroll-smooth antialiased`}>
+        <body className="relative flex h-full flex-col overflow-hidden font-sans">
           <ToastProvider>
             <UnsavedChangesProvider>
               <SidebarProvider>
                 <Header />
-                <main className="flex h-full min-h-0 flex-col overflow-y-auto">
+                <main className="flex min-h-0 flex-1 flex-col overflow-y-auto">
                   {children}
                 </main>
+                <SiteFooter />
               </SidebarProvider>
             </UnsavedChangesProvider>
           </ToastProvider>

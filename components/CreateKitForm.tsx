@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useAuth } from "@clerk/nextjs";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { api } from "@/lib/api";
 import {
   clearKitDraft,
@@ -32,12 +32,37 @@ export function CreateKitForm({
     ...initial,
   });
   const [submitting, setSubmitting] = useState(false);
+  const [hasExistingKit, setHasExistingKit] = useState(false);
 
   useLayoutEffect(() => {
     const saved = readKitDraft();
     if (!saved) return;
     setForm({ ...emptyDraft(), ...saved, ...initial });
   }, []);
+
+  useEffect(() => {
+    if (!isSignedIn) {
+      setHasExistingKit(false);
+      return;
+    }
+
+    let cancelled = false;
+
+    async function checkExisting() {
+      try {
+        const token = await getToken();
+        const kits = await api.listKits(token);
+        if (!cancelled) setHasExistingKit(kits.length > 0);
+      } catch {
+        if (!cancelled) setHasExistingKit(false);
+      }
+    }
+
+    void checkExisting();
+    return () => {
+      cancelled = true;
+    };
+  }, [getToken, isSignedIn]);
 
   function updateForm(patch: Partial<CreateKitPayload>) {
     setForm((current) => {
@@ -139,8 +164,17 @@ export function CreateKitForm({
             }
           />
         </div>
+        {hasExistingKit ? (
+          <p className="text-[13px] leading-5 text-muted">
+            Generating a new kit replaces your current one.
+          </p>
+        ) : null}
         <Button type="submit" size="lg" disabled={submitting}>
-          {submitting ? "Starting research…" : "Generate prep kit"}
+          {submitting
+            ? "Starting research…"
+            : hasExistingKit
+              ? "Replace prep kit"
+              : "Generate prep kit"}
         </Button>
       </form>
     </Card>
