@@ -10,7 +10,7 @@ export function SiteFooter() {
         >
           Made with
           <span className="inline-block origin-center text-[14px] leading-none normal-case drop-shadow-[0_0_8px_rgba(116,167,255,0.5)] transition-transform duration-300 ease-out group-hover:scale-125 group-hover:drop-shadow-[0_0_12px_rgba(116,167,255,0.85)]">
-            💙
+            🤍
           </span>
           by
           <span className="font-bold text-muted transition-colors duration-300 group-hover:text-foreground-secondary">

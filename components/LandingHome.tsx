@@ -13,6 +13,8 @@ const heroPills = [
   "Role-specific questions",
   "Flashcards & quiz",
   "Day-by-day plan",
+  "Practise before the interview",
+  "No live overlay, no extra tools.",
 ];
 
 const steps = [
@@ -261,15 +263,17 @@ export function LandingHome() {
       <section id="start" className="flex min-h-[65svh] scroll-mt-20 flex-col justify-start py-10 pt-24">
         <div className="grid items-stretch gap-10 md:grid-cols-[2fr_3fr]">
           <div className="flex h-full flex-col justify-between gap-4">
-            <Badge tone="info">Interview prep, researched for you</Badge>
-            <h1 className="max-w-xl text-4xl font-extrabold tracking-tight text-foreground sm:text-[40px] sm:leading-[1.1]">
-              Turn a job description into a personalised prep kit.
-            </h1>
-            <p className="max-w-lg text-[15px] leading-6 text-muted">
-              Prepto reads the company, the role, and public interview signal —
-              then builds a brief, question bank, flashcards, and a study
-              schedule you can reshape and practise against.
-            </p>
+            <div className="flex flex-col gap-6">
+              <Badge tone="info" className="w-fit">Interview prep, researched for you</Badge>
+              <h1 className="max-w-xl text-4xl font-extrabold tracking-tight text-foreground sm:text-[40px] sm:leading-[1.1]">
+                Turn a job description into a personalised prep kit.
+              </h1>
+              <p className="max-w-lg text-[15px] leading-6 text-muted">
+                Prepto reads the company, the role, and public interview signal —
+                then builds a brief, question bank, flashcards, and a study
+                schedule you can reshape and practise against.
+              </p>
+            </div>
             <ul className="flex flex-wrap gap-2">
               {heroPills.map((pill) => (
                 <li
@@ -315,7 +319,7 @@ export function LandingHome() {
                 preload="metadata"
                 title="Prepto walkthrough"
               >
-                <source src="/video/1790007219651169.mp4" type="video/mp4" />
+                <source src="/video/hero.webm" type="video/webm" />
               </video>
             </div>
           </div>
@@ -425,52 +429,52 @@ export function LandingHome() {
       </section>
 
       <div className="flex flex-col gap-6 pb-4">
-      <section id="faq" className="scroll-mt-20 pt-10">
-        <p className="text-[11px] font-bold tracking-[0.12em] text-muted uppercase">
-          FAQ
-        </p>
-        <h2 className="mt-2 max-w-2xl text-[28px] leading-tight font-extrabold tracking-tight sm:text-[32px]">
-          Straight answers before you generate.
-        </h2>
-        <FaqAccordion items={faqs} />
-      </section>
-
-      <section id="contact" className="scroll-mt-20 pt-10">
-        <div className="rounded-2xl border border-border bg-surface px-6 py-10 sm:px-10">
+        <section id="faq" className="scroll-mt-20 pt-10">
           <p className="text-[11px] font-bold tracking-[0.12em] text-muted uppercase">
-            Contact
+            FAQ
           </p>
           <h2 className="mt-2 max-w-2xl text-[28px] leading-tight font-extrabold tracking-tight sm:text-[32px]">
-            A question the FAQ didn&apos;t cover?
+            Straight answers before you generate.
           </h2>
-          <p className="mt-3 max-w-lg text-[15px] leading-6 text-muted">
-            Email is the fastest way to reach me about Prepto — bugs, ideas, or
-            a kit that missed the mark.
-          </p>
-          <a
-            href="mailto:knandwani27@gmail.com"
-            className="mt-6 inline-flex h-12 items-center gap-2 rounded-md bg-primary px-5 text-[15px] font-medium text-background hover:opacity-90"
-          >
-            <MailIcon className="h-4 w-4" />
-            Email me
-          </a>
-          <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[13px] font-medium text-muted">
-            {contactLinks.map((link) => (
-              <li key={link.label}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 hover:text-foreground"
-                >
-                  <link.icon className="h-3.5 w-3.5" />
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+          <FaqAccordion items={faqs} />
+        </section>
+
+        <section id="contact" className="scroll-mt-20 pt-10">
+          <div className="rounded-2xl border border-border bg-surface px-6 py-10 sm:px-10">
+            <p className="text-[11px] font-bold tracking-[0.12em] text-muted uppercase">
+              Contact
+            </p>
+            <h2 className="mt-2 max-w-2xl text-[28px] leading-tight font-extrabold tracking-tight sm:text-[32px]">
+              A question the FAQ didn&apos;t cover?
+            </h2>
+            <p className="mt-3 max-w-lg text-[15px] leading-6 text-muted">
+              Email is the fastest way to reach me about Prepto — bugs, ideas, or
+              a kit that missed the mark.
+            </p>
+            <a
+              href="mailto:knandwani27@gmail.com"
+              className="mt-6 inline-flex h-12 items-center gap-2 rounded-md bg-primary px-5 text-[15px] font-medium text-background hover:opacity-90"
+            >
+              <MailIcon className="h-4 w-4" />
+              Email me
+            </a>
+            <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-[13px] font-medium text-muted">
+              {contactLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 hover:text-foreground"
+                  >
+                    <link.icon className="h-3.5 w-3.5" />
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
       </div>
     </div>
   );
