@@ -41,11 +41,12 @@ export function Header() {
   const { open, toggle } = useSidebar();
   const isAuthPage =
     pathname.startsWith("/sign-in") || pathname.startsWith("/sign-up");
+  const isDemoPage = pathname === "/demo";
   const isAppRoute =
     pathname.startsWith("/new") || pathname.startsWith("/kits");
   const showAppChrome = isAppRoute || isSignedIn === true;
 
-  if (isAuthPage) {
+  if (isAuthPage || isDemoPage) {
     return null;
   }
 

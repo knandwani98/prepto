@@ -4,6 +4,7 @@ import { useState } from "react";
 import { CreateKitForm } from "@/components/CreateKitForm";
 import { HashLink } from "@/components/HashLink";
 import { LandingArt } from "@/components/LandingArt";
+import { WalkthroughVideo } from "@/components/WalkthroughVideo";
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import { cn } from "@/lib/cn";
@@ -311,17 +312,7 @@ export function LandingHome() {
                 Watch a kit get built from a job post.
               </h2>
             </div>
-            <div className="overflow-hidden rounded-xl border border-border-subtle bg-input">
-              <video
-                className="aspect-video w-full"
-                controls
-                playsInline
-                preload="metadata"
-                title="Prepto walkthrough"
-              >
-                <source src="/video/hero.webm" type="video/webm" />
-              </video>
-            </div>
+            <WalkthroughVideo />
           </div>
         </div>
       </section>
