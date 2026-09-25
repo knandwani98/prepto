@@ -10,7 +10,7 @@ export default function NewKitPage() {
         Research this role
       </h1>
       <p className="mt-2 mb-8 max-w-xl text-[15px] text-muted">
-        Paste the job description and company site. Prepto will crawl, search,
+        Paste the job description and company site. Prepto AI will crawl, search,
         and build your prep kit.
       </p>
       <CreateKitForm />

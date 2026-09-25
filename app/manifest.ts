@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Prepto",
-    short_name: "Prepto",
+    name: "Prepto AI",
+    short_name: "Prepto AI",
     description:
       "Turn a job description into a personalised interview preparation kit.",
     start_url: "/",

@@ -1,4 +1,4 @@
-import type { CreateKitPayload, GeneratedKit, Kit } from "./types";
+import type { CreateKitPayload, GeneratedKit, Kit, KitListPage } from "./types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
 
@@ -41,7 +41,16 @@ export const api = {
       body: JSON.stringify(payload),
     }),
 
-  listKits: (token: string | null) => request<Kit[]>("/kits", token),
+  listKits: (
+    token: string | null,
+    params?: { cursor?: string | null; limit?: number },
+  ) => {
+    const search = new URLSearchParams({
+      limit: String(params?.limit ?? 25),
+    });
+    if (params?.cursor) search.set("cursor", params.cursor);
+    return request<KitListPage>(`/kits?${search.toString()}`, token);
+  },
 
   getKit: (token: string | null, id: string) =>
     request<Kit>(`/kits/${id}`, token),

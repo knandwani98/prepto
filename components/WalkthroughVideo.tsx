@@ -27,7 +27,7 @@ export function WalkthroughVideo({
         muted={false}
         loop={autoPlay}
         preload={autoPlay ? "auto" : "metadata"}
-        title="Prepto walkthrough"
+        title="Prepto AI walkthrough"
       >
         <source src="/video/hero.webm" type="video/webm" />
       </video>

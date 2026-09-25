@@ -125,6 +125,21 @@ export interface Kit {
   updatedAt: string;
 }
 
+export interface KitListItem {
+  id: string;
+  status: KitStatus;
+  pinnedAt?: string | null;
+  createdAt: string;
+  companyName: string | null;
+  roleTitle: string | null;
+}
+
+export interface KitListPage {
+  pinned: KitListItem[];
+  kits: KitListItem[];
+  nextCursor: string | null;
+}
+
 export type RegenerableSection = keyof GeneratedKit;
 
 export interface CreateKitPayload {
