@@ -10,6 +10,7 @@ import {
   readKitDraft,
   saveKitDraft,
 } from "@/lib/draft";
+import { KIT_CREATED_EVENT, toKitListItem } from "@/lib/format";
 import type { CreateKitPayload } from "@/lib/types";
 import { Button } from "./ui/Button";
 import { Card } from "./ui/Card";
@@ -71,6 +72,9 @@ export function CreateKitForm({
       const token = await getToken();
       const kit = await api.createKit(token, payload);
       clearKitDraft();
+      window.dispatchEvent(
+        new CustomEvent(KIT_CREATED_EVENT, { detail: toKitListItem(kit) }),
+      );
       toast("Research started", "success");
       router.push(`/kits/${kit.id}`);
     } catch (error) {

@@ -1,4 +1,4 @@
-# ✨ Prepto frontend
+# ✨ Prepto AI frontend
 
 **Turn a job post into a study kit you can practise with.**
 
@@ -6,7 +6,7 @@
 📄 job post  →  🔎 research  →  🎒 kit  →  🙋 you
 ```
 
-Paste a job description, the company website, and how many days you have. Prepto looks up the company and builds a **prep kit** for you:
+Paste a job description, the company website, and how many days you have. Prepto AI looks up the company and builds a **prep kit** for you:
 
 - 🏢 company brief
 - 💼 role breakdown
@@ -23,7 +23,7 @@ You can edit the kit, practise with it, and walk into the interview ready.
 
 ## 🎁 What you get
 
-| You give | Prepto makes |
+| You give | Prepto AI makes |
 | --- | --- |
 | 📄 Job description | Company brief + hiring signals |
 | 🌐 Company website | Role breakdown + interview loop |

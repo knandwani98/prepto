@@ -76,8 +76,8 @@ export function Header() {
             className="flex items-center gap-2.5"
           >
             <BrandMark className="h-7 w-7" priority />
-            <span className="text-lg font-semibold tracking-tight text-foreground">
-              Prepto
+            <span className="text-xl leading-tight font-extrabold tracking-tight text-foreground">
+              Prepto AI
             </span>
           </Link>
         </div>

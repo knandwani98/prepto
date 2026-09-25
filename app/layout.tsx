@@ -12,7 +12,7 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const siteTitle = "Prepto — Interview prep kits";
+const siteTitle = "Prepto AI — Interview prep kits";
 const siteDescription =
   "Turn a job description into a personalised interview preparation kit.";
 
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     description: siteDescription,
     type: "website",
     url: "/",
-    siteName: "Prepto",
+    siteName: "Prepto AI",
     locale: "en_US",
   },
   twitter: {
@@ -41,18 +41,18 @@ const clerkLocalization = {
   lastAuthenticationStrategy: "Last",
   signIn: {
     start: {
-      title: "Sign in to Prepto",
-      titleCombined: "Sign in to Prepto",
-      subtitle: "Connect to Prepto with:",
-      subtitleCombined: "Connect to Prepto with:",
+      title: "Sign in to Prepto AI",
+      titleCombined: "Sign in to Prepto AI",
+      subtitle: "Connect to Prepto AI with:",
+      subtitleCombined: "Connect to Prepto AI with:",
     },
   },
   signUp: {
     start: {
       title: "Create your free account",
       titleCombined: "Create your free account",
-      subtitle: "Connect to Prepto with:",
-      subtitleCombined: "Connect to Prepto with:",
+      subtitle: "Connect to Prepto AI with:",
+      subtitleCombined: "Connect to Prepto AI with:",
     },
   },
 };

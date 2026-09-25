@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-export const alt = "Prepto — Interview prep kits";
+export const alt = "Prepto AI — Interview prep kits";
 export const size = {
   width: 1200,
   height: 630,
@@ -83,7 +83,7 @@ export default function Image() {
                   lineHeight: 1.1,
                 }}
               >
-                Prepto
+                Prepto AI
               </div>
               <div
                 style={{

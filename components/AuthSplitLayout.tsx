@@ -65,8 +65,8 @@ export function AuthSplitLayout({ children }: { children: ReactNode }) {
         <div className="flex flex-1 flex-col items-center justify-center px-6 py-20">
           <div className="mb-8 flex items-center gap-2.5 lg:hidden">
             <BrandMark className="h-7 w-7" />
-            <span className="text-lg font-semibold tracking-tight">
-              Prepto
+            <span className="text-lg leading-tight font-extrabold tracking-tight">
+              Prepto AI
             </span>
           </div>
           {children}

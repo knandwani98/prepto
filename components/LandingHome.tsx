@@ -27,7 +27,7 @@ const steps = [
   },
   {
     title: "We research the role",
-    body: "Prepto crawls the company site and public interview discussion, then writes a kit for this company — not a generic prompt.",
+    body: "Prepto AI crawls the company site and public interview discussion, then writes a kit for this company — not a generic prompt.",
     src: "/illustrations/undraw-researching.svg",
     alt: "Person researching at a desk with notes and a laptop",
   },
@@ -88,7 +88,7 @@ const comparisons = [
     body: "Company blog, Glassdoor threads, a Notion doc. Easy to miss the interview loop, and nothing is set up to practise.",
   },
   {
-    title: "Generate a Prepto kit",
+    title: "Generate a Prepto AI kit",
     body: "Research, questions, practice, and a schedule live in one kit you can reshape — built for this company and role.",
     highlight: true,
   },
@@ -101,11 +101,11 @@ const faqs = [
   },
   {
     q: "What happens after I hit generate?",
-    a: "Prepto crawls the company site, looks up public interview discussion, then writes the kit: brief, role breakdown, questions, flashcards, quiz, and a schedule. You can open it as soon as it’s ready and edit any section.",
+    a: "Prepto AI crawls the company site, looks up public interview discussion, then writes the kit: brief, role breakdown, questions, flashcards, quiz, and a schedule. You can open it as soon as it’s ready and edit any section.",
   },
   {
     q: "Is this a live interview assistant?",
-    a: "No. Prepto is for preparing before the call — reading the company, practising answers, and following a plan. It does not listen in, overlay answers, or hide from screen share.",
+    a: "No. Prepto AI is for preparing before the call — reading the company, practising answers, and following a plan. It does not listen in, overlay answers, or hide from screen share.",
   },
   {
     q: "Can I change the kit once it’s built?",
@@ -270,7 +270,7 @@ export function LandingHome() {
                 Turn a job description into a personalised prep kit.
               </h1>
               <p className="max-w-lg text-[15px] leading-6 text-muted">
-                Prepto reads the company, the role, and public interview signal —
+                Prepto AI reads the company, the role, and public interview signal —
                 then builds a brief, question bank, flashcards, and a study
                 schedule you can reshape and practise against.
               </p>
@@ -439,7 +439,7 @@ export function LandingHome() {
               A question the FAQ didn&apos;t cover?
             </h2>
             <p className="mt-3 max-w-lg text-[15px] leading-6 text-muted">
-              Email is the fastest way to reach me about Prepto — bugs, ideas, or
+              Email is the fastest way to reach me about Prepto AI — bugs, ideas, or
               a kit that missed the mark.
             </p>
             <a
